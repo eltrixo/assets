@@ -1,27 +1,29 @@
-/* === Replace default centered logo with your eltrixoTV logo === */
+/* === Replace default centered logo with your eltrixoTV/banner logo === */
 .pageTitleWithDefaultLogo {
-    background-image: url('https://github.com/eltrixo/assets/blob/a80035934e2acffd5f942f316c0a2c04b76eb21a/banner-light.png?raw=true)') !important;
+    background-image: url('https://cdn.jsdelivr.net/gh/eltrixo/assets@a80035934e2acffd5f942f316c0a2c04b76eb21a/banner-light.png') !important;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    width: 180px;           /* ← adjust this to fit your logo nicely */
-    height: 40px;           /* ← tweak height if needed */
-    text-indent: -9999px;   /* hides any fallback text */
+    width: 180px;           /* Adjust as needed – test 200px/50px if too small */
+    height: 50px;           /* Slightly taller often helps visibility */
+    text-indent: -9999px;   /* Hides fallback text */
+    min-height: 40px !important; /* Prevent collapse if image fails */
 }
 
-/* Make sure it shows up even when Jellyfin tries to use img or other elements */
+/* Hide any inner img or children that might conflict */
 .pageTitleWithDefaultLogo img,
 .pageTitleWithDefaultLogo > * {
     display: none !important;
 }
 
-/* === Completely remove the top-left menu button (hamburger / drawer toggle) === */
+/* Remove top-left hamburger / drawer button */
 .headerHomeButton,
-.skinHeader .paper-icon-button-light[data-action="menu"] {
+.skinHeader .paper-icon-button-light[data-action="menu"],
+.headerButtonLeft {
     display: none !important;
 }
 
-/* Optional: prevent the area from reserving space */
+/* Clean up left header space */
 .headerLeft {
     min-width: 0 !important;
     width: auto !important;
